@@ -1,0 +1,27 @@
+.nav-borders .nav-link.active {
+    color: #0061f2;
+    border-bottom: 2px solid #0061f2;
+}
+
+.nav-borders .nav-link.disabled {
+    color: #c5ccd6;
+}
+
+.nav-borders.flex-column .nav-link {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    margin-right: 0;
+    margin-left: 0;
+    border-bottom: none;
+    border-right-width: 0.125rem;
+    border-right-style: solid;
+    border-right-color: transparent;
+}
+
+.nav-borders.flex-column .nav-link.active {
+    border-right-color: #0061f2;
+}
