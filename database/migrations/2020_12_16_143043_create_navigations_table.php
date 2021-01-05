@@ -16,6 +16,7 @@ class CreateNavigationsTable extends Migration
     Schema::create('navigations', function (Blueprint $table) {
       $table->id();
       $table->foreignId("parent_id")->nullable();
+      $table->integer("sequence_number")->default(10);
       $table->foreignId("menu_id");
       $table->string("permission_name");
       $table->string("name");

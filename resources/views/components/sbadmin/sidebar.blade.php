@@ -34,7 +34,7 @@
   @can($navigation->permission_name)
   <li class="nav-item" id="{{$navigation->permission_name}}">
     @if($navigation->url)
-    <a class="nav-link" href="#link">
+    <a class="nav-link {{request()->is($navigation->url)  || request()->is($navigation->url.'/*') ? ' active' :''}}" href="{{url($navigation->url)}}">
       <i class="fas fa-fw fa-cog"></i>
       <span>{{$navigation->name}}</span>
     </a>
@@ -71,10 +71,16 @@
 
 </ul>
 <script>
-  let collapItem = document.querySelectorAll(".collapse-item");
+  let collapItem = document.querySelectorAll(".nav-link,.collapse-item");
   collapItem.forEach(item => {
     if (item.classList.contains("active")) {
-      item.closest(".collapse").classList.add("show")
+      console.log(item);
+      if (item.closest(".collapse")) {
+        item.closest(".collapse").classList.add("show")
+      }
+      if (item.closest(".nav-item")) {
+        item.closest(".nav-item").classList.add("active")
+      }
     }
   })
 </script>

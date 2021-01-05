@@ -228,6 +228,9 @@
                     {{$header ??  config('app.name')}}
                   </h1>
                 </div>
+                <div class="col-auto mb-3">
+                  {{$header_right ??  ""}}
+                </div>
               </div>
             </div>
           </div>

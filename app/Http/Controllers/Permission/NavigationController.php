@@ -30,9 +30,11 @@ class NavigationController extends Controller
     request()->validate([
       "name" => "required",
       "menu_id" => "required",
-      "permission" => "required"
+      "permission" => "required",
+      "sequence_number" => "nullable|numeric",
     ]);
     Navigation::create([
+      "sequence_number" => request('sequence_number') ?? null,
       'name' => request('name'),
       'url' => request("url") ?? null,
       "parent_id" => request("parent") ?? null,
@@ -48,7 +50,7 @@ class NavigationController extends Controller
       'submit' => "Update",
       "menus" => Menu::get(),
       "navigation" => $navigation,
-      "navigations" => Navigation::get(),
+      "navigations" => Navigation::latest()->get(),
       "permissions" => Permission::get(),
     ]);
   }
@@ -57,7 +59,9 @@ class NavigationController extends Controller
     request()->validate([
       "name" => "required",
       "menu_id" => "required",
-      "permission" => "required"
+      "permission" => "required",
+      "sequence_number" => "nullable|numeric",
+
     ]);
     $navigation->update([
       'name' => request('name'),
@@ -65,6 +69,8 @@ class NavigationController extends Controller
       "parent_id" => request("parent") ?? null,
       "menu_id" => request("menu_id"),
       'permission_name' => request('permission'),
+      "sequence_number" => request('sequence_number') ?? 10,
+
     ]);
     return redirect()->to(route("navigation"))->with("success", "Success Change Navigation");
   }

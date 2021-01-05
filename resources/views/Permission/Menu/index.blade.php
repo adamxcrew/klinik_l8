@@ -14,16 +14,7 @@
     <div class="card-body">
       <form action="{{route('menu.create')}}" method="POST">
         @csrf
-        <div class="form-group">
-          <label for="nameMenu">Email address</label>
-          <input class="form-control @error('name') is-invalid @enderror" id="nameMenu" name="name" placeholder="ex: Menu">
-          @error('name')
-          <div class="text-danger mt-2 d-block">{{ $message }}</div>
-          @enderror
-        </div>
-        <div class="form-group">
-          <input type="submit" class="btn btn-primary" value="Tambah">
-        </div>
+        @include("Permission.Menu.Partials.form-groupt")
       </form>
     </div>
   </div>

@@ -11,6 +11,6 @@ class Menu extends Model
   use HasFactory;
   public function Navigations()
   {
-    return $this->hasMany(Navigation::class)->where('parent_id', null);
+    return $this->hasMany(Navigation::class)->where('parent_id', null)->orderBy('sequence_number');
   }
 }

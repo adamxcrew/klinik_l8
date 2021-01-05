@@ -46,4 +46,13 @@ class User extends Authenticatable
   {
     return "/storage/" . $this->thumbnail;
   }
+  public function dokter()
+  {
+    return $this->hasOne(Dokter::class);
+  }
+  public function isDokter()
+  {
+    $dokters = Dokter::get();
+    
+  }
 }

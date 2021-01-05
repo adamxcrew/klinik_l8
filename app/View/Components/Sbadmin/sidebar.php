@@ -24,7 +24,7 @@ class sidebar extends Component
    */
   public function render()
   {
-    $menus = Menu::get();
+    $menus = Menu::orderBy('sequence_number')->get();
     return view('components.sbadmin.sidebar', compact("menus"));
   }
 }

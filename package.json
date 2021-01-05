@@ -26,8 +26,11 @@
     },
     "dependencies": {
         "@babel/preset-react": "^7.12.10",
+        "mdbreact": "^5.0.1",
         "react-bootstrap-sweetalert": "^5.2.0",
         "react-router-dom": "^5.2.0",
+        "recoil": "^0.1.2",
+        "select2-react-component": "^6.1.0",
         "sweetalert": "^2.1.2"
     }
 }

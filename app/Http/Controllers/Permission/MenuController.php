@@ -11,7 +11,8 @@ class MenuController extends Controller
   public function index()
   {
     return view("Permission.Menu.index", [
-      "menus" => Menu::get(),
+      "menu" => new Menu(),
+      "menus" => Menu::orderBy('sequence_number')->get(),
     ]);
   }
   public function create()
@@ -24,9 +25,13 @@ class MenuController extends Controller
   {
     request()->validate([
       "name" => "required|min:3",
+      "sequence_number" => "nullable|numeric",
+
     ]);
     Menu::create([
       "name" => request('name'),
+      "sequence_number" => request('sequence_number') ?? 10,
+
     ]);
     return back()->with('success', "Menu Ditambahkan");
   }
@@ -41,12 +46,14 @@ class MenuController extends Controller
   {
     request()->validate([
       "name" => "required",
+      "sequence_number" => "nullable|numeric",
+
     ]);
     $menu->update([
       "name" => request('name'),
-      "guard_name" => request("guard_name") ?? "web",
+      "sequence_number" => request('sequence_number') ?? null,
     ]);
-    return redirect()->to(route("permission.menu"));
+    return redirect()->to(route("menu"));
   }
   public function destroy(Menu $menu)
   {

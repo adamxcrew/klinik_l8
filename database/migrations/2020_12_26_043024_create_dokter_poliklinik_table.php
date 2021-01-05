@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddThumbnailToUsersTable extends Migration
+class CreateDokterPoliklinikTable extends Migration
 {
   /**
    * Run the migrations.
@@ -13,8 +13,9 @@ class AddThumbnailToUsersTable extends Migration
    */
   public function up()
   {
-    Schema::table('users', function (Blueprint $table) {
-      $table->string("thumbnail")->nullable();
+    Schema::create('dokter_poliklinik', function (Blueprint $table) {
+      $table->foreignId("dokter_id");
+      $table->foreignId("poliklinik_id");
     });
   }
 
@@ -25,8 +26,6 @@ class AddThumbnailToUsersTable extends Migration
    */
   public function down()
   {
-    Schema::table('users', function (Blueprint $table) {
-      $table->dropColumn("thumbnail");
-    });
+    Schema::dropIfExists('dokter_poliklinik');
   }
 }
