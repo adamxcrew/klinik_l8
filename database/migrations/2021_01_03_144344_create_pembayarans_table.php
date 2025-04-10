@@ -16,7 +16,7 @@ class CreatePembayaransTable extends Migration
     Schema::create('pembayarans', function (Blueprint $table) {
       $table->id();
       $table->foreignId("pendaftaran_id");
-      $table->string("no_invoice")->unique();
+      $table->string("no_invoice")->nullable();
       $table->integer("total_bayar");
       $table->integer("uang_bayar");
       $table->integer("kembalian");
